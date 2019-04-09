@@ -14,14 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include   # ←, includeを追加
-# from rest_framework.schemas import get_schema_view
-#
-# schema_view = get_schema_view(title='ListSample API')
+from django.conf.urls import url, include
+from django.urls import path, include
+from cms.urls import router as cms_router
+
 
 urlpatterns = [
     path('cms/', include('cms.urls')),   #
     path('admin/', admin.site.urls),
-    # path('api-auth/', include('rest_framework.urls')),  # API認証
-    # path('schema/', schema_view),  # APIスキーマ
+    url(r'^api/', include(cms_router.urls)),  # API認証
 ]

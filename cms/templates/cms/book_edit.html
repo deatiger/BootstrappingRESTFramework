@@ -4,19 +4,21 @@
 {% block title %}書籍の編集{% endblock title %}
 
 {% block content %}
-    <h4 class="mt-4 mb-5 border-bottom">書籍の編集</h4>
-    {% if book_id %}
-    <form action="{% url 'cms:book_mod' book_id=book_id %}" method="post">
-    {% else %}
-    <form action="{% url 'cms:book_add' %}" method="post">
-    {% endif %}
-      {% csrf_token %}
-      {% bootstrap_form form layout='horizontal' %}
-      <div class="form-group row">
-        <div class="offset-md-3 col-md-9">
-          <button type="submit" class="btn btn-primary">送信</button>
-        </div>
-      </div>
-    </form>
-    <a href="{% url 'cms:book_list' %}" class="btn btn-secondary btn-sm">戻る</a>
+    <div class="container">
+        <h4 class="mt-4 mb-5 border-bottom">書籍の編集</h4>
+        {% if book_id %}
+        <form action="{% url 'cms:book_mod' book_id=book_id %}" method="post">
+        {% else %}
+        <form action="{% url 'cms:book_add' %}" method="post">
+        {% endif %}
+          {% csrf_token %}
+          {% bootstrap_form form layout='horizontal' %}
+          <div class="form-group row">
+            <div class="mx-auto">
+              <a href="{% url 'cms:book_list' %}" class="btn btn-primary btn-xs mr-3">戻る</a>
+              <button type="submit" class="btn btn-danger btn-xs ml-3">編集完了</button>
+            </div>
+          </div>
+        </form>
+    </div>
 {% endblock content %}

@@ -1,8 +1,5 @@
-from django.contrib import admin
 from cms.models import Book
-
-# admin.site.register(Book)
-# admin.site.register(Impression)
+from django.contrib import admin
 
 
 class BookAdmin(admin.ModelAdmin):
@@ -12,8 +9,3 @@ class BookAdmin(admin.ModelAdmin):
 
 admin.site.register(Book, BookAdmin)
 
-# class ImpressionAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'comment',)
-#     list_display_links = ('id', 'comment',)
-#     raw_id_fields = ('book',)   # 外部キーをプルダウンにしない（データ件数が増加時のタイムアウトを予防）
-# admin.site.register(Impression, ImpressionAdmin)
